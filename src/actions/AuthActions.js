@@ -19,7 +19,20 @@ export const nameChanged = (text) => {
 };
 
 export const formSubmit = () => {
-    return {
-      type: FORM_SUBMIT
-    };
+  return {
+    type: FORM_SUBMIT
+  };
+};
+
+export const loginUser = ({ reference, name }) => {
+  return (dispatch) => {
+    fetch('blabla', {
+      data: {
+        reference,
+        name
+      }
+    })
+      .then(response => response.json())
+      .then(user => console.log(user));
+  };
 };
