@@ -1,6 +1,8 @@
 import {
   REFERENCE_CHANGED,
-  NAME_CHANGED
+  NAME_CHANGED,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL
 } from './types';
 
 export const referenceChanged = (text) => {
@@ -26,9 +28,15 @@ export const formSubmit = (reference, name) => {
       }
     })
       .then(response => response.json())
+      .then(user => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: user
+        });
+      })
       .catch(() => {
         dispatch({
-          type: 'LOGIN_SUCCESS',
+          type: LOGIN_FAIL,
           payload: {}
         });
       });
