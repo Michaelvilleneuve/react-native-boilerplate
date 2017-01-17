@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Content, InputGroup, Input, Button } from 'native-base';
-import { refChanged } from '../actions';
+import { referenceChanged, nameChanged, formSubmit } from '../actions';
 
 class LoginForm extends Component {
-  onRefChange(text) {
-    this.props.refChanged(text);
+  onReferenceChange(text) {
+    this.props.referenceChanged(text);
+  }
+
+  onNameChange(text) {
+    this.props.nameChanged(text);
+  }
+
+  onFormSubmit() {
+    this.props.formSubmit();
   }
 
   render() {
@@ -18,13 +26,21 @@ class LoginForm extends Component {
           <InputGroup style={inputgroup}>
             <Input
               placeholder="Numéro de contrat"
-              onChangeText={this.onRefChange.bind(this)}
+              onChangeText={this.onReferenceChange.bind(this)}
             />
           </InputGroup>
           <InputGroup>
-            <Input placeholder="Votre nom" />
+            <Input
+              placeholder="Votre nom"
+              onChangeText={this.onNameChange.bind(this)}
+            />
           </InputGroup>
-          <Button block rounded style={button}>
+          <Button
+            block
+            rounded
+            style={button}
+            onPress={this.onFormSubmit.bind(this)}
+          >
             Se connecter
           </Button>
         </Content>
@@ -47,4 +63,10 @@ const styles = {
   }
 };
 
-export default connect(null, { refChanged })(LoginForm);
+const mapStateToProps = ({ auth }) => {
+  const { reference, name } = auth;
+
+  return { reference, name };
+};
+
+export default connect(mapStateToProps, { referenceChanged, nameChanged, formSubmit })(LoginForm);
