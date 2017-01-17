@@ -1,0 +1,3 @@
+rootProject.name = 'Local'
+
+include ':app'
