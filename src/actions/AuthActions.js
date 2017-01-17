@@ -1,7 +1,6 @@
 import {
   REFERENCE_CHANGED,
-  NAME_CHANGED,
-  FORM_SUBMIT
+  NAME_CHANGED
 } from './types';
 
 export const referenceChanged = (text) => {
@@ -18,13 +17,7 @@ export const nameChanged = (text) => {
   };
 };
 
-export const formSubmit = () => {
-  return {
-    type: FORM_SUBMIT
-  };
-};
-
-export const loginUser = ({ reference, name }) => {
+export const formSubmit = (reference, name) => {
   return (dispatch) => {
     fetch('blabla', {
       data: {
@@ -33,6 +26,11 @@ export const loginUser = ({ reference, name }) => {
       }
     })
       .then(response => response.json())
-      .then(user => console.log(user));
+      .catch(() => {
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: {}
+        });
+      });
   };
 };

@@ -13,7 +13,9 @@ class LoginForm extends Component {
   }
 
   onFormSubmit() {
-    this.props.formSubmit();
+    const { reference, name } = this.props;
+
+    this.props.formSubmit(reference, name);
   }
 
   render() {
