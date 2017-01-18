@@ -2,12 +2,16 @@ import {
   REFERENCE_CHANGED,
   NAME_CHANGED,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_FAIL,
+  LOGIN_USER
 } from '../actions/types';
 
 const INITIAL_STATE = {
   reference: '',
   name: '',
+  user: null,
+  error: '',
+  loading: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,11 +20,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, reference: action.payload };
     case NAME_CHANGED:
       return { ...state, name: action.payload };
+    case LOGIN_USER:
+      return { ...state, loading: true, error: '' };
     case LOGIN_SUCCESS:
       return { user: action.payload };
     case LOGIN_FAIL:
-      console.log('auth fail');
-      return { ...state, error: 'Vos identifiants sont incorrects' };
+      return { ...state, error: 'Vos identifiants sont incorrects', loading: false };
     default:
       return state;
   }

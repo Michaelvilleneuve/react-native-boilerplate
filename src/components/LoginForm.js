@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, Content, InputGroup, Input, Button } from 'native-base';
+import { Container, Content, InputGroup, Input, Button, Spinner, Text } from 'native-base';
 import { referenceChanged, nameChanged, formSubmit } from '../actions';
 
 class LoginForm extends Component {
+  componentWillUpdate() {
+    LayoutAnimation.spring();
+  }
+
   onReferenceChange(text) {
     this.props.referenceChanged(text);
   }
@@ -18,8 +23,26 @@ class LoginForm extends Component {
     this.props.formSubmit(reference, name);
   }
 
+  showLoading() {
+    if (this.props.loading === true) {
+      return (
+        <Spinner color='orange' />
+      );
+    }
+    return (
+      <Button
+        block
+        rounded
+        style={styles.button}
+        onPress={this.onFormSubmit.bind(this)}
+      >
+        Se connecter
+      </Button>
+    );
+  }
+
   render() {
-    const { container, button, inputgroup } = styles;
+    const { container, inputgroup, errors } = styles;
 
 
     return (
@@ -37,14 +60,8 @@ class LoginForm extends Component {
               onChangeText={this.onNameChange.bind(this)}
             />
           </InputGroup>
-          <Button
-            block
-            rounded
-            style={button}
-            onPress={this.onFormSubmit.bind(this)}
-          >
-            Se connecter
-          </Button>
+          {this.showLoading()}
+          <Text style={errors}>{this.props.error}</Text>
         </Content>
       </Container>
     );
@@ -57,18 +74,23 @@ const styles = {
     marginTop: 100
   },
   button: {
-    marginTop: 20
+    marginTop: 20,
+    backgroundColor: 'orange'
   },
   inputgroup: {
     marginTop: 5,
     marginBottom: 5
+  },
+  errors: {
+    paddingTop: 10,
+    color: 'orange'
   }
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { reference, name } = auth;
+  const { reference, name, loading, error } = auth;
 
-  return { reference, name };
+  return { reference, name, loading, error };
 };
 
 export default connect(mapStateToProps, { referenceChanged, nameChanged, formSubmit })(LoginForm);
