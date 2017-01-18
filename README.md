@@ -24,7 +24,7 @@ I left a login form so you can understand the code and keep the architecture.
 ## How do I launch the project ?
 
 1. npm install
-2. npm link
+2. react-native link
 3. Either run 👉 react-native run-ios
 4. Or 👉 react-native run-android
 
