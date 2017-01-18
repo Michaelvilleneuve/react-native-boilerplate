@@ -6,8 +6,12 @@ import Main from './components/Main';
 const RouterComponent = () => {
   return (
     <Router>
-      <Scene key="login" component={LoginForm} initial hideNavBar />
-      <Scene key="main" component={Main} />
+      <Scene key="auth">
+        <Scene key="login" component={LoginForm} initial hideNavBar />
+      </Scene>
+      <Scene key="main">
+        <Scene key="default" component={Main} hideNavBar />
+      </Scene>
     </Router>
   );
 };

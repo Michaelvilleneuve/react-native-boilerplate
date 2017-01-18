@@ -30,12 +30,7 @@ class LoginForm extends Component {
       );
     }
     return (
-      <Button
-        block
-        rounded
-        style={styles.button}
-        onPress={this.onFormSubmit.bind(this)}
-      >
+      <Button block rounded style={styles.button} onPress={this.onFormSubmit.bind(this)}>
         Se connecter
       </Button>
     );
