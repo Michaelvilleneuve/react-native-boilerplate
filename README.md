@@ -38,15 +38,15 @@ If you don't now how to organize redux actions/reducers, have a look at how it w
 
 In general, your programming flow will be the following :
 
-1. Add a scene in src/Router and link it to a new component
-2. Create the component in src/components
-3. Write the component JSX code
-4. Import redux in your new component
+- Add a scene in src/Router and link it to a new component
+- Create the component in src/components
+- Write the component JSX code
+- Import redux in your new component
 
 ```javascript
 import { connect } from 'react-redux';
 ```
-5. Map global state to access it as props
+- Map global state to access it as props
 
 ```javascript
 const mapStateToProps = ({ theKeyOfTheAction }) => {
@@ -58,6 +58,6 @@ const mapStateToProps = ({ theKeyOfTheAction }) => {
 
 export default connect(mapStateToProps, { yourActions, blaBla })(LoginForm);
 ```
-6. Create your actions in src/actions
-7. Reference them in src/actions/types
-8. Pass back your new state from src/reducers if needed
+- Create your actions in src/actions
+- Reference them in src/actions/types
+- Pass back your new state from src/reducers if needed
