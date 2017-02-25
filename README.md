@@ -10,6 +10,7 @@ Because I couldn't find any correct and lightweight boilerplate to start with Re
 - React Native (of course) 🚀🚀 https://facebook.github.io/react-native/
 - Redux 🎉 (To handle app state) http://redux.js.org/
 - ReduxThunk (To handle Redux async actions) https://github.com/gaearon/redux-thunk
+- CodePush (To push update OTA) https://github.com/Microsoft/react-native-code-push
 - React-native-router-flux (To manage routing within the app 🛣) https://github.com/aksonov/react-native-router-flux
 - NativeBase (To have basic cross platform components, and icon fonts 👏👍) http://nativebase.io
 - ESLint (To make developers code better and unified JS) http://eslint.org/
