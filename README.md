@@ -24,9 +24,11 @@ I left a login form so you can understand the code and keep the architecture.
 ## How do I launch the project ?
 
 1. npm install
-2. react-native link
-3. Either run 👉 react-native run-ios
-4. Or 👉 react-native run-android
+2. npm install -G react-native-rename
+3. react-native-rename yournewname
+3. react-native link
+4. Either run 👉 react-native run-ios
+5. Or 👉 react-native run-android
 
 ## How do I start coding ?
 
